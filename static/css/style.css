@@ -1,0 +1,17 @@
+.bottom-flex {
+    flex: 0 0 100%;
+    align-items: center;
+    justify-content: center;
+    bottom: 41px;
+    position: absolute;
+    width: 70%;
+
+}
+
+.bottom-flex-start{
+  align-self: flex-start;
+}
+
+.bottom-flex-end{
+  align-self: flex-end;
+}
