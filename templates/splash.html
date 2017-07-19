@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Python Chat App Yo</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Custom CSS-->
+<link rel="stylesheet" href="../static/css/splash.css">
+
+<!-- Animate CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+<body>
+<div class="container">
+<div class="ng-scope" id="splash-page">
+    <div class="fade-element-in ng-scope">
+        <div class="grid-block header center">
+            <div class="grid-container">
+              <img id="logo" src="../static/content/logo.png"></div>
+            </div>
+        </div>
+        <div class="grid-block container v-align">
+            <div class="login-buttons grid-container">
+                <span class="slogan">The best python chat interface.</span>
+                <div class="login-button">
+                  <button id="mylogin" type="button" class="btn btn-primary btn-lg">Login</button>
+                  <a href="ChatAppPage.html" <button id="mylogin" type="button" class="btn btn-primary btn-lg">Login</button></a>
+                </div>
+
+
+                <div class="form">
+                <ul class="tab-group">
+                  <li class="tab active">
+                    <a href="#signup">Sign Up</a>
+                  </li>
+                  <li class="tab">
+                    <a href="#login">Log In</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div id="signup">
+                    <h1>Sign Up for Free</h1>
+                    <form action="/" method="post">
+                      <div class="top-row">
+                        <div class="field-wrap">
+                          <label>First Name<span class="req">*</span></label> <input autocomplete="off" required="" type="text">
+                        </div>
+                        <div class="field-wrap">
+                          <label>Last Name<span class="req">*</span></label> <input autocomplete="off" required="" type="text">
+                        </div>
+                      </div>
+                      <div class="field-wrap">
+                        <label>Email Address<span class="req">*</span></label> <input autocomplete="off" required="" type="email">
+                      </div>
+                      <div class="field-wrap">
+                        <label>Set A Password<span class="req">*</span></label> <input autocomplete="off" required="" type="password">
+                      </div><button class="button button-block" type="submit"></button>Get Started
+                    </form>
+                  </div>
+                  <div id="login">
+                    <h1>Welcome Back!</h1>
+                    <form action="/" method="post">
+                      <div class="field-wrap">
+                        <label>Email Address<span class="req">*</span></label> <input autocomplete="off" required="" type="email">
+                      </div>
+                      <div class="field-wrap">
+                        <label>Password<span class="req">*</span></label> <input autocomplete="off" required="" type="password">
+                      </div>
+                      <p class="forgot"><a href="#">Forgot Password?</a></p><button class="button button-block"></button>Log In
+                    </form>
+                  </div>
+                </div><!-- tab-content -->
+              </div><!-- /form -->
+
+
+            </div>
+        </div>
+        <div class="checks"></div><video autoplay="" loop="" poster="images/mobile-splash.png" id="bgvid"><source src="../static/content/splash.mp4" type="video/mp4"></video>
+  
+          </div><!-- end ngIf: !loading --><!-- ngIf: loading -->
+      </div>
+  </div>
+
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous">
+  </script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- Socket I/O -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+  <!-- Custom Java Script -->
+  <script src="../static/js/login.js"></script>
+
+
+</body>
+</html>
