@@ -84,6 +84,13 @@ a{
 
 .message_holder {
     max-height: inherit;
+    overflow-y: auto;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .chat {
