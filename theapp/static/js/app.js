@@ -28,7 +28,8 @@ var form = $( 'form').on('submit', function ( event ){
 
 // Capture Message
 socket.on('my response', function( msg ){
-	if( typeof msg.user !== 'undefined' ){
+	// FIX THIS msg.user
+	if( typeof msg !== 'undefined' ){
 		$('h1').remove();
 		$('div.message_holder').append('<div class="message_roll"><b>' + msg.user + ': </b>' + msg.msg + '</div>' );
 	}
