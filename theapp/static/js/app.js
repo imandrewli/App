@@ -37,5 +37,4 @@ socket.on('my response', function( msg ){
 	}
 })
 
-var element = document.getElementById("chatbox");
-element.scrollTop = element.scrollHeight;
+ $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
