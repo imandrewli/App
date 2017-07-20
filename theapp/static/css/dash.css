@@ -82,8 +82,8 @@ a{
 
 /* M E S S A G E S */
 
-.messagebox {
-    max-height: 1000px;
+.message_holder {
+    max-height: inherit;
 }
 
 .chat {
