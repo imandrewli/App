@@ -95,14 +95,14 @@ body {
 .form {
 	background: rgba(19, 35, 47, 0.9);
     padding: 40px;
-    max-width: 600px;
+    max-width: 385px;
     margin: 40px auto;
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     font-family: 'Titillium Web', sans-serif;
     position: absolute;
     z-index: 1;
-    top: 18%;
+    top: 14%;
     left: 0;
     right: 0;
 	opacity: 0;
@@ -172,7 +172,7 @@ label {
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
-  font-size: 22px;
+  font-size: 15px;
 }
 label .req {
   margin: 2px;
@@ -219,7 +219,7 @@ textarea {
 
 .field-wrap {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 
 .top-row:after {

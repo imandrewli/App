@@ -9,15 +9,21 @@ $(document).ready(function(){
 	var $login_button = $("#mylogin");
 	var $slogan = $('.slogan');
 	var $form = $('.form');
+	var $welcome= $('#welcome');
+	var $login_div = $('.login-button');
 	var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 	$login_button.click(function(){
+
+		$welcome.css('z-Index', '3');
+		console.log('welcome should have changed');
+
 		console.log("hello");
 		$login_button.addClass('animated flipOutY');
 		$slogan.addClass('animated flipOutX').one(animationEnd, function(){
-			$form.addClass('animated flipInY');
-			$form.css('z-Index' , '2');
-			$form.css('opacity' , '1');
-			$('login-button').css('z-Index', '1');
+			$form.addClass('animated flipInY').one(animationEnd), function(){
+				$(".login-button").empty();
+			}
+			$welcome.css('opacity' , '1');
 		});
 
 	});
