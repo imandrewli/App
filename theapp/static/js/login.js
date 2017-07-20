@@ -45,7 +45,42 @@ $('.tab a').on('click', function (e) {
   
 });
 
-	
+var form = $('form').on('submit', function ( event ){
+	// to allow for when the user hits enter
+	event.preventDefault();
+	var firstName = $('input.firstName').val();
+	var lastName   = $('input.lastName').val();
+	var emailAddress = $('input.emailAddress').val();
+	var alias = $('input.alias').val();
+
+	var user = {
+		firstName: firstName,
+		lastName: lastName,
+		email: emailAddress,
+		alias: alias 
+	}
+	console.log(user);
+
+var flag = false;
+for (var key in user) {
+	if(user[key]==false) {
+		$form.addClass('animated shake').one(animationEnd, function(){
+			$(this).removeClass('animated shake');
+			});
+		flag = true;
+	}
+}
+
+if (flag == false) {
+		console.log(flag);
+				//Empty field
+		$('input.firstName').val('');
+		$('input.lastName').val('');
+		$('input.emailAddress').val('');
+		$('input.alias').val('');
+}
+
+});
 	
    /* $("a").click(function(event){
         event.preventDefault();
