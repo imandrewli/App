@@ -20,9 +20,10 @@ $(document).ready(function(){
 		console.log("hello");
 		$login_button.addClass('animated flipOutY');
 		$slogan.addClass('animated flipOutX').one(animationEnd, function(){
-			$form.addClass('animated flipInY').one(animationEnd), function(){
-				$(".login-button").empty();
-			}
+			$form.addClass('animated flipInY').one(animationEnd, function(){
+				$(this).removeClass('animated flipInY');
+				$login_div.remove();
+			});
 			$welcome.css('opacity' , '1');
 		});
 
