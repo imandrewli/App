@@ -35,6 +35,7 @@ socket.on('my response', function( msg ){
 		$('h1').remove();
 		$('div.message_holder').append('<div class="message_roll"><b>' + msg.user + ': </b>' + msg.msg + '</div>' );
 		$('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+		$('#chatinputbox').val('');
 	}
 })
 
