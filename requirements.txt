@@ -1,7 +1,9 @@
 bottle==0.12.13
 click==6.7
+eventlet==0.21.0
 Flask==0.12.2
 Flask-SocketIO==2.9.1
+gevent==1.2.2
 itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
@@ -9,4 +11,5 @@ python-engineio==1.7.0
 python-socketio==1.7.6
 six==1.10.0
 virtualenv==15.1.0
+gunicorn==18.0
 Werkzeug==0.12.2
