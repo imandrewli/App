@@ -26,6 +26,8 @@ var form = $( 'form').on('submit', function ( event ){
 
 });
 
+$("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+
 // Capture Message
 socket.on('my response', function( msg ){
 	// FIX THIS msg.user
