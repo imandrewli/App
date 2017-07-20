@@ -26,8 +26,7 @@ var form = $( 'form').on('submit', function ( event ){
 
 });
 
-var objDiv = document.getElementById("#chatbox");
-objDiv.scrollTop = objDiv.scrollHeight;
+
 
 // Capture Message
 socket.on('my response', function( msg ){
@@ -37,3 +36,6 @@ socket.on('my response', function( msg ){
 		$('div.message_holder').append('<div class="message_roll"><b>' + msg.user + ': </b>' + msg.msg + '</div>' );
 	}
 })
+
+var element = document.getElementById("chatbox");
+element.scrollTop = element.scrollHeight;
