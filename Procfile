@@ -1,1 +1,1 @@
-web: python chatapp.py
+web: gunicorn --worker-class eventlet -w 1 theapp:myapp

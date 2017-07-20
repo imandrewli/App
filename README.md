@@ -21,7 +21,9 @@ The following prerequistes are required to be installed prior to attempting the 
 	$ virtualenv envx
 
 4. Then run envx to activate the virtual environment:
-	source envx/Scripts/activate
+
+	On unix: source envx/Scripts/activate 
+	On windows: envx\Scripts\activate
 
 	Once envx activated you should see the following output: $ (envx) 
 
@@ -37,9 +39,8 @@ The following prerequistes are required to be installed prior to attempting the 
 
 	$ pip install eventlet
 
-
 8. Now start the app:
 
-	$ python chatapp.py
+	$ python run.py
 
 9. Navigate to localhost:5000

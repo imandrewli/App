@@ -1,6 +1,6 @@
 
 
-var socket = io.connect('http://localhost:5000');
+var socket = io.connect();
 socket.on('connect', function(){
 	socket.emit('event', {
 		data: 'User Connected'
