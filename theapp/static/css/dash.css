@@ -82,6 +82,10 @@ a{
 
 /* M E S S A G E S */
 
+.messagebox {
+    max-height: 1000px;
+}
+
 .chat {
     list-style: none;
     background: none;

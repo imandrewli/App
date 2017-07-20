@@ -31,6 +31,6 @@ socket.on('my response', function( msg ){
 	// FIX THIS msg.user
 	if( typeof msg !== 'undefined' ){
 		$('h1').remove();
-		$('div.message_holder').append('<div class="message_roll"><b>' + msg.user + ': </b>' + msg.msg + '</div>' );
+		$('div.message_holder').append('<span class="message_roll"><b>' + msg.user + ': </b>' + msg.msg + '</span>' );
 	}
 })
