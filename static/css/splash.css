@@ -180,10 +180,10 @@ label .req {
 }
 
 label.active {
-  -webkit-transform: translateY(50px);
-          transform: translateY(50px);
-  left: 2px;
-  font-size: 14px;
+  -webkit-transform: translateY(-19px);
+    transform: translateY(-19px);
+    left: 3px;
+    font-size: 14px
 }
 label.active .req {
   opacity: 0;
