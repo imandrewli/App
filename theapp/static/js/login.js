@@ -45,6 +45,8 @@ $('.tab a').on('click', function (e) {
   
 });
 
+
+var flag = true;
 var form = $('form').on('submit', function ( event ){
 	// to allow for when the user hits enter
 	event.preventDefault();
@@ -61,7 +63,7 @@ var form = $('form').on('submit', function ( event ){
 	}
 	console.log(user);
 
-var flag = false;
+flag = false;
 for (var key in user) {
 	if(user[key]==false) {
 		$form.addClass('animated shake').one(animationEnd, function(){
@@ -78,20 +80,35 @@ if (flag == false) {
 		$('input.lastName').val('');
 		$('input.emailAddress').val('');
 		$('input.alias').val('');
+		setTimeout(wait_link, 10);	
 }
 
+	console.log(user.alias);
+
+	if (typeof(Storage) !== "undefined") {
+	    // Store
+	    sessionStorage.setItem("alias", user.alias)
+	    console.log(sessionStorage.getItem("alias"));
+	}
+
 });
+
+function wait_link (){
+
+   	console.log("!@#$%^&*()")
+    linkLocation = "/Chat/";
+    $("body").fadeOut(1000, redirectPage);      
 	
-   /* $("a").click(function(event){
-        event.preventDefault();
-        linkLocation = this.href;
-        $("body").fadeOut(1000, redirectPage);      
-    });
-	
-         
     function redirectPage() {
         window.location = linkLocation;
     }
-*/
+}
+
+
+
 });
+
+
+
+
 
