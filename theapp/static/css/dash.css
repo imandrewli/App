@@ -275,7 +275,7 @@ emoji.funny{background-image: url(https://i.imgur.com/qKia58V.png);}
   to { opacity: 0.5; }
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     min-width: 12px;
     width: 12px;
     max-width: 12px;
@@ -307,7 +307,7 @@ emoji.funny{background-image: url(https://i.imgur.com/qKia58V.png);}
 ::-webkit-scrollbar-button {
     display: block;
     height: 26px;
-}
+} */
 
 /* T Y P E */
 
