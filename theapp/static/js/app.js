@@ -11,7 +11,7 @@ socket.on ('my response', function(msg){
 })
 
 
-var form = $( 'form').on('submit', function ( event ){
+var form = $('form').on('submit', function ( event ){
 	// to allow for when the user hits enter
 	event.preventDefault();
 	var user_name = $('input.username').val();
@@ -23,6 +23,8 @@ var form = $( 'form').on('submit', function ( event ){
 	});
 
 	console.log(user_name, message);
+
+	//Empty field
 
 });
 

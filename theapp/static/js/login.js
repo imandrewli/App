@@ -30,71 +30,68 @@ $(document).ready(function(){
 	});
 	
 	
+$('.tab a').on('click', function (e) {
+  
+	  e.preventDefault();
+	  
+	  $(this).parent().addClass('active');
+	  $(this).parent().siblings().removeClass('active');
+	  
+	  target = $(this).attr('href');
+
+	  $('.tab-content > div').not(target).hide();
+	  
+	  $(target).fadeIn(600);
+  
+});
+
+var form = $('form').on('submit', function ( event ){
+	// to allow for when the user hits enter
+	event.preventDefault();
+	var firstName = $('input.firstName').val();
+	var lastName   = $('input.lastName').val();
+	var emailAddress = $('input.emailAddress').val();
+	var alias = $('input.alias').val();
+
+	var user = {
+		firstName: firstName,
+		lastName: lastName,
+		email: emailAddress,
+		alias: alias 
+	}
+	console.log(user);
+
+var flag = false;
+for (var key in user) {
+	if(user[key]==false) {
+		$form.addClass('animated shake').one(animationEnd, function(){
+			$(this).removeClass('animated shake');
+			});
+		flag = true;
+	}
+}
+
+if (flag == false) {
+		console.log(flag);
+				//Empty field
+		$('input.firstName').val('');
+		$('input.lastName').val('');
+		$('input.emailAddress').val('');
+		$('input.alias').val('');
+}
+
+});
 	
-    $("a").click(function(event){
+   /* $("a").click(function(event){
         event.preventDefault();
         linkLocation = this.href;
         $("body").fadeOut(1000, redirectPage);      
     });
+	
          
     function redirectPage() {
         window.location = linkLocation;
     }
-	
-	
-	
-	
-	//FORMS STUFF
-	
-	
-	$('.form').find('input, textarea').on('keyup blur focus', function (e) {
-  
-  var $this = $(this),
-      label = $this.prev('label');
-
-	  if (e.type === 'keyup') {
-			if ($this.val() === '') {
-          label.removeClass('active highlight');
-        } else {
-          label.addClass('active highlight');
-        }
-    } else if (e.type === 'blur') {
-    	if( $this.val() === '' ) {
-    		label.removeClass('active highlight'); 
-			} else {
-		    label.removeClass('highlight');   
-			}   
-    } else if (e.type === 'focus') {
-      
-      if( $this.val() === '' ) {
-    		label.removeClass('highlight'); 
-			} 
-      else if( $this.val() !== '' ) {
-		    label.addClass('highlight');
-			}
-    }
-
-});
-
-$('.tab a').on('click', function (e) {
-  
-  e.preventDefault();
-  
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
-  
-  target = $(this).attr('href');
-
-  $('.tab-content > div').not(target).hide();
-  
-  $(target).fadeIn(600);
-  
-});
-
-	
-	
-
-
-
+*/
 });
 
