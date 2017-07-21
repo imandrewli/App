@@ -36,6 +36,10 @@ var form = $('form').on('submit', function ( event ){
 
 });
 
+$(window).on('resize',function() {
+	$('#chatbox').css('max-height',$(window).height() - 150);
+});
+
 
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
@@ -57,6 +61,7 @@ socket.on('chat', function( msg ){
 		$('h1').remove();
 		$('div.message_holder').append('<div class="message_roll"><b style="color:' + chosen_color + '">' + msg.user + ': </b>' + msg.msg + '</div>' );
 		$('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+		$('#chatbox').css('max-height', $(window).height() - 150);
 		// clear textbox
 		$('#chatinputbox').val('');
 	}
