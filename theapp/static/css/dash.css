@@ -83,7 +83,7 @@ a{
 /* M E S S A G E S */
 
 .message_holder {
-    max-height: 700px;
+    height: auto;
     overflow-y: auto;
 }
 
