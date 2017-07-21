@@ -6,10 +6,12 @@ html, body {
     font-family: 'Lato', sans-serif;
     margin: 0px auto;
 }
-::selection{
+
+::selection {
   background: rgba(82,179,217,0.3);
   color: inherit;
 }
+
 a{
   color: rgba(82,179,217,0.9);
 }
@@ -83,7 +85,7 @@ a{
 /* M E S S A G E S */
 
 .message_holder {
-    max-height: 485px;
+    height: auto;
     overflow-y: auto;
 }
 
@@ -275,7 +277,7 @@ emoji.funny{background-image: url(https://i.imgur.com/qKia58V.png);}
   to { opacity: 0.5; }
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     min-width: 12px;
     width: 12px;
     max-width: 12px;
@@ -307,7 +309,7 @@ emoji.funny{background-image: url(https://i.imgur.com/qKia58V.png);}
 ::-webkit-scrollbar-button {
     display: block;
     height: 26px;
-}
+} */
 
 /* T Y P E */
 

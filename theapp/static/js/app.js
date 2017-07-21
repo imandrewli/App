@@ -29,6 +29,9 @@ var form = $('form').on('submit', function ( event ){
 });
 
 
+$(window).on('resize',function() {
+	$('#chatbox').css('max-height',$(window).height() - 150);
+});
 
 // Capture Message
 socket.on('my response', function( msg ){
@@ -37,6 +40,8 @@ socket.on('my response', function( msg ){
 		$('h1').remove();
 		$('div.message_holder').append('<div class="message_roll"><b>' + msg.user + ': </b>' + msg.msg + '</div>' );
 		$('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+		$('#chatbox').css('max-height',$(window).height() - 150);
+
 		// clear textbox
 		$('#chatinputbox').val('');
 	}
