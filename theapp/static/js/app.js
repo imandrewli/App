@@ -29,9 +29,9 @@ var form = $('form').on('submit', function ( event ){
 });
 
 
-window.onresize = function() {
+$(window).on('resize',function() {
 	$('#chatbox').css('max-height',$(window).height() - 150);
-}
+});
 
 // Capture Message
 socket.on('my response', function( msg ){
