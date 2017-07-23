@@ -11,7 +11,7 @@ socket.on ('my response', function(msg){
 })
 
 
-var form = $( 'form').on('submit', function ( event ){
+var form = $('form').on('submit', function ( event ){
 	// to allow for when the user hits enter
 	event.preventDefault();
 	var user_name = $('input.username').val();
@@ -24,12 +24,26 @@ var form = $( 'form').on('submit', function ( event ){
 
 	console.log(user_name, message);
 
+	//Empty field
+
+});
+
+
+$(window).on('resize',function() {
+	$('#chatbox').css('max-height',$(window).height() - 150);
 });
 
 // Capture Message
 socket.on('my response', function( msg ){
-	if( typeof msg.user !== 'undefined' ){
+	// FIX THIS msg.user
+	if( typeof msg !== 'undefined' ){
 		$('h1').remove();
 		$('div.message_holder').append('<div class="message_roll"><b>' + msg.user + ': </b>' + msg.msg + '</div>' );
+		$('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+		$('#chatbox').css('max-height',$(window).height() - 150);
+
+		// clear textbox
+		$('#chatinputbox').val('');
 	}
 })
+

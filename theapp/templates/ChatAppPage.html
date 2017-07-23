@@ -1,52 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Python Chat App Yo</title>
+  <title>Hissper Chat Client</title>
+
+  <!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/bootstrap.min.css"/>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
   <!-- Custom CSS-->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+  <link rel="stylesheet" href="../static/css/dash.css">
   <body>
-  <div class="text-center well"><b>HissChat</b></div>
-    <div class="container">
+    <div class="menu well">
+      <div class="back"><i class="fa fa-chevron-left"></i></div>
+      <div class="name">
+        General Chat
+      </div>
+    </div>
+    <div class="text-center well"><b></div>
+    <div id="chatbox" class="container well message_holder">
       <div class="col-lg-12">
         <div class="no_message">
           <h1 style='color: #ccc'>No message yet...</h1>
-          <div class="message_holder"></div>
         </div>
       </div>
       </div>
 
-      <div class="container">
         <div class="bottom-flex">
         <div class="bottom-flex-start"></div>
             <form action="" method="POST">
-              <b>Type your message below <span class="glyphicon glyphicon-arrow-down"></span></b>
-              <div class="clearfix" style="margin-top: 5px;"></div>
-              <input type="text" class="username form-control" placeholder="User Name">
+                <div class="footer">
+                  <div class="container" style="margin-bottom: 20px">
+                  <div class="col-sm-10">
+                  <div style="padding-top: 5px;"></div>
+                  <input type="text" class="message form-control" id="chatinputbox" autocomplete="off" placeholder="Type your message here">
+                  </div>
               <div style="padding-top: 5px;"></div>
-              <input type="text" class="message form-control" placeholder="Messages">
-              <div style="padding-top: 5px;"></div>
+              <div class="col-sm-2">
               <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-send"></span> Send</button>
+              </div>
+              </div>
+                </div>
             </form>
-
         <div class="bottom-flex-end"></div>
         </div>
       </div>
+
+      <audio id="sound" src""></audio>
+
+
+
+
+
+
+
 
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.2.1.js"
       integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
       crossorigin="anonymous">
-  </script>
+      </script>
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -54,8 +80,12 @@
   <!-- Socket I/O -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 
+  <!-- Alertify.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.10.0/alertify.min.js"></script>
+
   <!-- Custom Java Script -->
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+  
 
 
 </body>
