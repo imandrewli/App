@@ -7,6 +7,7 @@ $(document).ready(function(){
     var $welcome= $('#welcome');
     var $login_div = $('.login-button');
     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+    var room = ''
     $login_button.click(function(){
         $welcome.css('z-Index', '3');
         $login_button.addClass('animated flipOutY');
@@ -34,15 +35,10 @@ $(document).ready(function(){
     var flag = true;
     var form = $('form').on('submit', function ( event ){
         event.preventDefault();
-        var firstName = $('input.firstName').val();
-        var lastName   = $('input.lastName').val();
-        var emailAddress = $('input.emailAddress').val();
         var alias = $('input.alias').val();
+        room = $('input.room').val();
 
         var user = {
-            firstName: firstName,
-            lastName: lastName,
-            email: emailAddress,
             alias: alias 
         }
 
@@ -57,9 +53,6 @@ $(document).ready(function(){
         }
 
         if (flag == false) {
-                $('input.firstName').val('');
-                $('input.lastName').val('');
-                $('input.emailAddress').val('');
                 $('input.alias').val('');
                 setTimeout(wait_link, 10);    
         }
@@ -70,7 +63,7 @@ $(document).ready(function(){
     });
 
     function wait_link (){
-        linkLocation = "/chat/general";
+        linkLocation = "/chat/" + String(room);
         $("body").fadeOut(1000, redirectPage);      
         function redirectPage() {
             window.location = linkLocation;

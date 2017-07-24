@@ -47,6 +47,7 @@ var form = $('form').on('submit', function ( event ){
         color: chosen_color,
         room: room
     });
+    $('#chatinputbox').val('');
 });
 
 $(window).on('resize',function() {
@@ -55,12 +56,11 @@ $(window).on('resize',function() {
 
 // Capture new messages
 socket.on('message response', function( msg ){
-    // FIX THIS msg.user
     if( typeof msg.user !== 'undefined' ){
         $('h1').remove();
         $('div.message_holder').append('<div class="message_roll"><b style="color:' + msg.color + '">' + msg.user + ': </b>' + msg.msg + '</div>' );
         $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
         $('#chatbox').css('max-height', $(window).height() - 150);
-        $('#chatinputbox').val('');
+        
     }
 });
