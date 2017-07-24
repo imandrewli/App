@@ -5,8 +5,6 @@ from flask import session
 from flask_socketio import emit
 from flask_socketio import join_room, leave_room
 
-room_list = []
-
 @myapp.route('/')
 def index():
     return render_template('splash.html')
@@ -32,11 +30,3 @@ def on_join(json):
     room = json['room']
     join_room(room)
     emit('join response', json, room=room)
-    #emit(alias + ' has entered the room.', room=room)
-
-@socketio.on('leave')
-def on_leave(json):
-    username = json['username']
-    room = json['room']
-    leave_room(room)
-    #emit(username + ' has left the room.', room=room)

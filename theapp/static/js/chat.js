@@ -61,6 +61,5 @@ socket.on('message response', function( msg ){
         $('div.message_holder').append('<div class="message_roll"><b style="color:' + msg.color + '">' + msg.user + ': </b>' + msg.msg + '</div>' );
         $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
         $('#chatbox').css('max-height', $(window).height() - 150);
-        
     }
 });
