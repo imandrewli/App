@@ -45,10 +45,10 @@ def on_join(json):
         pass
     else:
         room_dict[str(alias)] = room
-    print "<<["
+    print ("<<[")
     for key, value in room_dict.items():
         print (key, value)
-    print "]>>"
+    print ("]>>")
 
 
     join_room(room)
