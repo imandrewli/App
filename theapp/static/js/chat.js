@@ -102,7 +102,7 @@ $('#join_room').on('click', function(e){
 
 
 function myFunc(vars) {
-    return vars
+    return JSON.parse(vars)
 }
 
 
