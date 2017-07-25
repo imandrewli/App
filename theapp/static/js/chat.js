@@ -35,6 +35,7 @@ function getRandomColor() {
 var chosen_color = getRandomColor();
 
 
+
 var form = $('form').on('submit', function ( event ){
     // to allow for when the user hits enter
     event.preventDefault();
@@ -98,4 +99,10 @@ $('#join_room').on('click', function(e){
         window.location = linkLocation;
     }  
 });
+
+
+function myFunc(vars) {
+    return vars
+}
+
 
