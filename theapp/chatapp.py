@@ -33,7 +33,7 @@ def get_file_name():
 def on_message(json):
     print ('received something chat:' + str(json))
     room = json['room']
-    print room
+    print (room)
     emit('message response', json, room=room)
 
 @socketio.on('join')
