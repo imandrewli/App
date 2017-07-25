@@ -7,6 +7,7 @@ socket.on('connect', function(){
         alias: alias,
         room:  room
     });
+    document.getElementById("chat_room_name").innerHTML=room;
 });
 
 //Capture users joining
@@ -97,3 +98,4 @@ $('#join_room').on('click', function(e){
         window.location = linkLocation;
     }  
 });
+
