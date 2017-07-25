@@ -127,8 +127,7 @@
 
   <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
   <script type="text/javascript">
-  myVar = myFunc("{{rooms}}")
-  alert(myVar)
+  myVar = myFunc("{{rooms|safe}}")
   </script>
 
 

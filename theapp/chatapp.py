@@ -20,9 +20,8 @@ def chat_room(chat_room):
 def dashboard():
     global room_dict
     test = []
-    for value in room_dict.items():
-        test.append(value)
-    test = json.dumps(test)
+    for key, value in room_dict.items():
+        test.append(str(value))        
     return render_template('dashboard.html', rooms=test)
 
 @myapp.route('/getFileName')
@@ -38,7 +37,7 @@ def on_message(json):
 
 @socketio.on('join')
 def on_join(json):
-    global rooms
+    global room_dict
     alias = json['alias']
     room = json['room']
     if room in room_dict:
