@@ -101,6 +101,13 @@ a{
       margin-bottom: 5px;
 }
 
+td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
+
+.selected {
+    background-color: brown;
+    color: #FFF;
+}
+
 div.chatroom {
     border-radius: 0.2em;
     height: 400px;
@@ -119,9 +126,6 @@ th {
     padding: 8px;
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
 /* M E S S A G E S */
 
 .message_holder {

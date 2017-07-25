@@ -79,3 +79,22 @@ $('#back_to_login i').on('click', function (e) {
         window.location = "/";
     }  
 });
+
+$(document).ready(function() {
+       $('#table tr:nth-child(2)').addClass('selected');
+})
+
+$("#table tr").click(function(){
+   $(this).addClass('selected').siblings().removeClass('selected');    
+   var value=$(this).find('td:nth-child(2)').html();
+});
+
+$('#join_room').on('click', function(e){
+    alert($("#table tr.selected td:nth-child(2)").html());
+    var room = String($("#table tr.selected td:nth-child(2)").html());
+    linkLocation = "/chat/" + String(room);
+    $("body").fadeOut(1000, redirectPage);      
+    function redirectPage() {
+        window.location = linkLocation;
+    }  
+});
