@@ -90,7 +90,6 @@ $("#table tr").click(function(){
 });
 
 $('#join_room').on('click', function(e){
-    alert($("#table tr.selected td:nth-child(2)").html());
     var room = String($("#table tr.selected td:nth-child(2)").html());
     linkLocation = "/chat/" + String(room);
     $("body").fadeOut(1000, redirectPage);      
