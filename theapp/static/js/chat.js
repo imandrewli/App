@@ -63,3 +63,19 @@ socket.on('message response', function( msg ){
         $('#chatbox').css('max-height', $(window).height() - 150);
     }
 });
+
+$('#back_to_dashboard i').on('click', function (e) {  
+ linkLocation = "/dashboard";
+    $("body").fadeOut(1000, redirectPage);      
+    function redirectPage() {
+        window.location = linkLocation;
+    }  
+});
+
+$('#back_to_login i').on('click', function (e) {  
+ linkLocation = "/";
+    $("body").fadeOut(1000, redirectPage);      
+    function redirectPage() {
+        window.location = "/";
+    }  
+});

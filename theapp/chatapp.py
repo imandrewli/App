@@ -13,6 +13,10 @@ def index():
 def chat_room(chat_room):
     return render_template('ChatAppPage.html')
 
+@myapp.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
 @myapp.route('/getFileName')
 def get_file_name():
     return 'static/content/connected.mp3'
@@ -30,3 +34,4 @@ def on_join(json):
     room = json['room']
     join_room(room)
     emit('join response', json, room=room)
+    
