@@ -82,16 +82,16 @@ $('#back_to_login i').on('click', function (e) {
     }
 });
 
-$(document).ready(function () {
-    $('#table tr:nth-child(2)').addClass('selected');
+$(window).on('load', function () {
+    $('#table tr').eq(1).addClass('selected');
 })
 
-$("#table tr").click(function () {
-    $(this).addClass('selected').siblings().removeClass('selected');
-    var value = $(this).find('td:nth-child(2)').html();
+$(document).on('click', 'table #table-rows', function () {
+    $("#table #table-rows").removeClass('selected');
+    $(this).addClass('selected')
 });
 
-$('#join_room').on('click', function (e) {
+$('#join_room').on('click', function () {
     var room = String($("#table tr.selected td:nth-child(2)").html());
     linkLocation = "/chat/" + String(room);
     $("body").fadeOut(1000, redirectPage);
@@ -101,16 +101,12 @@ $('#join_room').on('click', function (e) {
 });
 
 
-function myFunc(vars) {
+function generateTable(vars) {
     var array = vars.split(',')
-    alert(array)
-
     var tbody = document.getElementById('table');
     for (var i = 0; i < array.length; i++) {
-        var tr = "<tr>";
-        if (array[i].toString().substring(array[i].toString().indexOf('.'), array[i].toString().length) < 2) array[i] += "0";
-
-        tr += "<td>" + parseInt(i+1) + "</td>" + "<td>" + array[i].replace(/[\[\]']/g, '') + "</td></tr>";
+        var tr = "<tr id='table-rows'>";
+        tr += "<td>" + parseInt(i+1) + "</td>" + "<td>" + array[i].replace(/[\[\]'\s]/g, '') + "</td></tr>";
         tbody.innerHTML += tr;
     }
 }

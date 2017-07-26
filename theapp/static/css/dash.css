@@ -35,6 +35,7 @@ a{
 
 .back {
     position: absolute;
+    z-index: 10;
     width: 50px;
     height: 50px;
     top: 0px;
@@ -92,6 +93,15 @@ a{
 }
 
 /* D A S H B O A R D */
+
+#table{
+    width:100%; 
+    border-collapse:collapse; 
+}
+#table td{ 
+    padding:7px; border: #ddd 1px solid;
+}
+
  div.msg_bbl {
       background-color: #ddd;
       padding: 5px 10px;
@@ -103,7 +113,7 @@ a{
 td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
 
 .selected {
-    background-color: brown;
+    background-color: rgba(82,179,217,0.9);
     color: #FFF;
 }
 
