@@ -7,7 +7,7 @@ from flask_socketio import join_room, leave_room
 import json
 
 room_dict = {}
-room_list = set()
+rooms = set()
 @myapp.route('/')
 def index():
     return render_template('splash.html')
@@ -19,10 +19,10 @@ def chat_room(chat_room):
 @myapp.route('/dashboard/')
 def dashboard():
     global room_dict
-    global room_list
+    global rooms
     for key, value in room_dict.items():
-        room_list.add(str(value))        
-    return render_template('dashboard.html', rooms=list(room_list))
+        rooms.add(str(value))        
+    return render_template('dashboard.html', rooms=list(rooms))
 
 @myapp.route('/getFileName')
 def get_file_name():
@@ -43,14 +43,9 @@ def on_join(json):
     if room in room_dict:
         pass
     else:
-        print "swoop"
         #do not add lobby room
         if (len(room) != 0):
             room_dict[str(alias)] = room
-    print ("<<[")
-    for key, value in room_dict.items():
-        print (key, value)
-    print ("]>>")
 
     join_room(room)
     emit('join response', json, room=room)
