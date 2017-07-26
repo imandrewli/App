@@ -102,27 +102,15 @@ $('#join_room').on('click', function (e) {
 
 
 function myFunc(vars) {
-    alert(vars)
-    var obj = [{
-        "key": "1",
-        "value": vars
-    }, {
-        "key": "berry",
-        "value": 1.7
-    }, {
-        "key": "banana",
-        "value": 1.5
-    }, {
-        "key": "cherry",
-        "value": 1.2
-    }];
-    var globalCounter = 0;
-    var tbody = document.getElementById('table');
-    for (var i = 0; i < Object.keys(obj).length; i++) {
-        var tr = "<tr>";
-        if (obj[i].value.toString().substring(obj[i].value.toString().indexOf('.'), obj[i].value.toString().length) < 2) obj[i].value += "0";
+    var array = vars.split(',')
+    alert(array)
 
-        tr += "<td>" + obj[i].key + "</td>" + "<td>$" + obj[i].value.toString() + "</td></tr>";
+    var tbody = document.getElementById('table');
+    for (var i = 0; i < array.length; i++) {
+        var tr = "<tr>";
+        if (array[i].toString().substring(array[i].toString().indexOf('.'), array[i].toString().length) < 2) array[i] += "0";
+
+        tr += "<td>" + parseInt(i+1) + "</td>" + "<td>" + array[i].replace(/[\[\]']/g, '') + "</td></tr>";
         tbody.innerHTML += tr;
     }
 }
