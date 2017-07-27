@@ -7,24 +7,31 @@ socket.on('connect', function () {
         alias: alias,
         room: room
     });
-    if(document.getElementById("chat_room_name")) {
-        document.getElementById("chat_room_name").innerHTML = room; 
+    var chatRoomIdentifier = document.getElementById("chat_room_name");
+    var aliasIdentifier = document.getElementById("alias-banner");
+
+    if(chatRoomIdentifier) {
+        chatRoomIdentifier.innerHTML = room; 
     }
-    if(document.getElementById("alias-banner")) {
-        document.getElementById("alias-banner").innerHTML = "Alias: " + alias;
+    if(aliasIdentifier) {
+        aliasIdentifier.innerHTML = "Alias: " + alias;
     }
 });
 
 //Capture users joining
 socket.on('join response', function (msg) {
-    alertify.set('notifier', 'position', 'top-right');
-    alertify.success(String(msg.alias) + " has joined the room");
+    if (typeof alertify !== 'undefined') {
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.success(String(msg.alias) + " has joined the room");   
+    }
 
     var audio = document.getElementById('sound');
-    audio.src = '../static/content/connected.mp3';
-    audio.load();
-    audio.oncanplaythrough = function () {
-        this.play();
+    if (audio) {
+        audio.src = '../static/content/connected.mp3';
+        audio.load();
+        audio.oncanplaythrough = function () {
+            this.play();
+        }
     }
 });
 
