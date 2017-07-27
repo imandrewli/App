@@ -27,14 +27,43 @@
 </head>
 
 <body>
-  <div class="menu well">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Chatroom</h4>
+        </div>
+        <div class="modal-body">
+          <form id="create-chatroom" action="/" method="post">
+            <div class="field-wrap">
+              <input class="room" autocomplete="off" placeholder="Enter chatroom name" autofocus="autofocus" />
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="start_chatting" class="btn btn-danger" type="submit">Start Chatting</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="menu">
     <div class="back" id="back_to_login"><i class="fa fa-chevron-left"></i></div>
     <div class="name">
+      Back to Login
+    </div>
+    <div class="name_center">    <div class="name_right" id="alias-banner">
+    </div>
       Dashboard
     </div>
   </div>
   <div class="text-center well"></div>
-
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
@@ -49,11 +78,14 @@
             <th>Chatroom</th>
             <th>Active Users</th>
           </tr>
-                
+
         </table>
       </div>
       <div class="col-sm-3">
         <button id="join_room" type="button" style="width: 150px" class="btn-primary"> Join Chatroom </button>
+      </div>
+      <div class="col-sm-3">
+        <button id="create_room" type="button" style="width: 150px" class="btn-danger" data-toggle="modal" data-target="#myModal"> Create Chatroom </button>
       </div>
     </div>
   </div>
@@ -89,12 +121,11 @@
         $('div.message_holder').append('<div class="msg_bbl"><b style="color: #000">' + msg.user_name + '</b> ' + msg.message + '</div>')
       }
     })
-
   </script>
 
   <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
   <script type="text/javascript">
-  myVar = generateTable("{{rooms|safe}}")
+    myVar = generateTable("{{rooms|safe}}")
   </script>
 
 

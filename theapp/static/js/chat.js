@@ -7,7 +7,12 @@ socket.on('connect', function () {
         alias: alias,
         room: room
     });
-    document.getElementById("chat_room_name").innerHTML = room;
+    if(document.getElementById("chat_room_name")) {
+        document.getElementById("chat_room_name").innerHTML = room; 
+    }
+    if(document.getElementById("alias-banner")) {
+        document.getElementById("alias-banner").innerHTML = "Alias: " + alias;
+    }
 });
 
 //Capture users joining
@@ -66,7 +71,7 @@ socket.on('message response', function (msg) {
     }
 });
 
-$('#back_to_dashboard i').on('click', function (e) {
+$('#back_to_dashboard i').on('click', function () {
     linkLocation = "/dashboard";
     $("body").fadeOut(1000, redirectPage);
     function redirectPage() {
@@ -74,7 +79,7 @@ $('#back_to_dashboard i').on('click', function (e) {
     }
 });
 
-$('#back_to_login i').on('click', function (e) {
+$('#back_to_login i').on('click', function () {
     linkLocation = "/";
     $("body").fadeOut(1000, redirectPage);
     function redirectPage() {
@@ -100,15 +105,49 @@ $('#join_room').on('click', function () {
     }
 });
 
-
 function generateTable(vars) {
     var array = vars.split(',')
     var tbody = document.getElementById('table');
     for (var i = 0; i < array.length; i++) {
         var tr = "<tr id='table-rows'>";
-        tr += "<td>" + parseInt(i+1) + "</td>" + "<td>" + array[i].replace(/[\[\]'\s]/g, '') + "</td></tr>";
+        tr += "<td>" + parseInt(i + 1) + "</td>" + "<td>" + array[i].replace(/[\[\]'\s]/g, '') + "</td></tr>";
         tbody.innerHTML += tr;
     }
 }
 
+var form = $('form#create-chatroom').on('submit', function (event) {
+    event.preventDefault();
+    var alias = sessionStorage.getItem("alias");
+    room = $('input.room').val();
 
+    var user = {
+        alias: alias
+    }
+
+    alert(user.alias);
+    flag = false;
+    for (var key in user) {
+        if (user[key] == false) {
+            $form.addClass('animated shake').one(animationEnd, function () {
+                $(this).removeClass('animated shake');
+            });
+            flag = true;
+        }
+    }
+
+    if (flag == false) {
+        setTimeout(wait_link, 10);
+    }
+    if (typeof (Storage) !== "undefined") {
+        sessionStorage.setItem("alias", user.alias)
+        console.log(sessionStorage.getItem("alias"));
+    }
+});
+
+function wait_link() {
+    linkLocation = "/chat/" + String(room);
+    $("body").fadeOut(1000, redirectPage);
+    function redirectPage() {
+        window.location = linkLocation;
+    }
+}
