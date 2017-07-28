@@ -78,7 +78,7 @@ socket.on('message response', function (msg) {
     }
 });
 
-$('#back_to_dashboard i').on('click', function () {
+$('#back_to_dashboard').on('click', function () {
     linkLocation = "/dashboard";
     $("body").fadeOut(1000, redirectPage);
     function redirectPage() {
@@ -86,7 +86,7 @@ $('#back_to_dashboard i').on('click', function () {
     }
 });
 
-$('#back_to_login i').on('click', function () {
+$('#back_to_login').on('click', function () {
     linkLocation = "/";
     $("body").fadeOut(1000, redirectPage);
     function redirectPage() {
@@ -131,7 +131,6 @@ var form = $('form#create-chatroom').on('submit', function (event) {
         alias: alias
     }
 
-    alert(user.alias);
     flag = false;
     for (var key in user) {
         if (user[key] == false) {
@@ -143,7 +142,9 @@ var form = $('form#create-chatroom').on('submit', function (event) {
     }
 
     if (flag == false) {
-        setTimeout(wait_link, 10);
+         linkLocation = "/chat/" + String(room);
+         window.location = linkLocation;
+    
     }
     if (typeof (Storage) !== "undefined") {
         sessionStorage.setItem("alias", user.alias)
