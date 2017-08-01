@@ -62,7 +62,7 @@ $(document).ready(function(){
     });
 
     function wait_link (){
-        linkLocation = "/dashboard/";
+        linkLocation = "/dashboard";
         $("body").fadeOut(1000, redirectPage);      
         function redirectPage() {
             window.location = linkLocation;
