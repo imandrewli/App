@@ -32,7 +32,7 @@ def on_message(json):
     room_history[str(room)].append(json)
     emit('message response', json, room=room)
     if ( len(room_history[str(room)]) > 25 ):
-		room_history[str(room)].pop(0)
+        room_history[str(room)].pop(0)
 
 @socketio.on('createroom')
 def on_create_room(json):
