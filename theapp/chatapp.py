@@ -20,6 +20,7 @@ def chat_room(chat_room):
 def dashboard():
     global room_dict
     global rooms
+    rooms.add("General")
     for key, value in room_dict.items():
         rooms.add(str(value))        
     return render_template('dashboard.html', rooms=list(rooms))
