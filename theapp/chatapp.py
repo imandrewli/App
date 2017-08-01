@@ -31,12 +31,15 @@ def on_message(json):
     room = json['room']        
     room_history[str(room)].append(json)
     emit('message response', json, room=room)
+    if ( len(room_history[str(room)]) > 25 ):
+		room_history[str(room)].pop(0)
 
 @socketio.on('createroom')
 def on_create_room(json):
     room_name = str(json['room'])
     if room_name not in room_history:
         room_history[room_name] = []
+        emit('new room msg', json)
 
 @socketio.on('join')
 def on_join(json):
@@ -46,6 +49,6 @@ def on_join(json):
     join_room(room)
     
     emit('join response', json, room=room)
-
+    emit('history req', json)
     for item in room_history[str(room)]:
         emit('message response', item)
