@@ -1,64 +1,78 @@
 var socket = io.connect();
 var alias = sessionStorage.getItem("alias");
-socket.on('connect', function(){
+socket.on('connect', function () {
     var path = window.location.pathname.split('/');
     room = path[2];
     socket.emit('join', {
         alias: alias,
-        room:  room
+        room: room
     });
+    var chatRoomIdentifier = document.getElementById("chat_room_name");
+    var aliasIdentifier = document.getElementById("alias-banner");
+
+    if(chatRoomIdentifier) {
+        chatRoomIdentifier.innerHTML = room; 
+    }
+    if(aliasIdentifier) {
+        aliasIdentifier.innerHTML = "Alias: " + alias;
+    }
 });
 
 //Capture users joining
-socket.on ('join response', function(msg){
-    alertify.set('notifier','position', 'top-right');
-    alertify.success(String(msg.alias) + " has joined the room");
+socket.on('join response', function (msg) {
+    if (typeof alertify !== 'undefined') {
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.success(String(msg.alias) + " has joined the room");   
+    }
 
     var audio = document.getElementById('sound');
+    if (audio) {
         audio.src = '../static/content/connected.mp3';
         audio.load();
-        audio.oncanplaythrough = function() {
+        audio.oncanplaythrough = function () {
             this.play();
         }
+    }
 });
 
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
 
 var chosen_color = getRandomColor();
 
 
-var form = $('form').on('submit', function ( event ){
+
+var form = $('form').on('submit', function (event) {
     // to allow for when the user hits enter
     event.preventDefault();
-    var message   = $('input.message').val();
+    var message = $('input.message').val();
     var path = window.location.pathname.split('/');
     room = path[2];
 
-    socket.emit( 'message', {
-        user : alias,
-        msg : message,
+    socket.emit('message', {
+        user: alias,
+        msg: message,
         color: chosen_color,
         room: room
     });
     $('#chatinputbox').val('');
 });
 
-$(window).on('resize',function() {
-    $('#chatbox').css('max-height',$(window).height() - 150);
+$(window).on('resize', function () {
+    $('#chatbox').css('max-height', $(window).height() - 150);
 });
 
 // Capture new messages
-socket.on('message response', function( msg ){
-    if( typeof msg.user !== 'undefined' ){
+socket.on('message response', function (msg) {
+    if (typeof msg.user !== 'undefined') {
         $('h1').remove();
-        $('div.message_holder').append('<div class="message_roll"><b style="color:' + msg.color + '">' + msg.user + ': </b>' + msg.msg + '</div>' );
+        $('div.message_holder').append('<div class="message_roll"><b style="color:' + msg.color + '">' + msg.user + ': </b>' + msg.msg + '</div>');
         $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
         $('#chatbox').css('max-height', $(window).height() - 150);
     }
@@ -73,3 +87,4 @@ socket.on('history req', function( msg ){
         $('#chatbox').css('max-height', $(window).height() - 150);
     }
 });
+

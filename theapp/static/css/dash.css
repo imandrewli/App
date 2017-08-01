@@ -35,6 +35,7 @@ a{
 
 .back {
     position: absolute;
+    z-index: 10;
     width: 50px;
     height: 50px;
     top: 0px;
@@ -63,7 +64,7 @@ a{
 }
 .name{
     position: absolute;
-    top: 3px;
+    top: 6px;
     left: 50px;
     font-family: 'Lato';
     font-size: 25px;
@@ -71,6 +72,26 @@ a{
     color: rgba(255,255,255,0.98);
     cursor: default;
 }
+.name_center{
+    margin-top:10px;
+    text-align: center;
+    font-family: 'Lato';
+    font-size: 25px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.98);
+    cursor: default;
+}
+.name_right{
+    position: absolute;
+    right:50px;
+    margin-bottom: 50px;
+    text-align: right;
+    font-family: 'Lato';
+    font-size: 25px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.98);
+}
+
 .last{
     position: absolute;
     top: 30px;
@@ -80,6 +101,49 @@ a{
     font-weight: 400;
     color: rgba(255,255,255,0.6);
     cursor: default;
+}
+
+/* D A S H B O A R D */
+
+#table{
+    width:100%; 
+    border-collapse:collapse; 
+}
+#table td{ 
+    padding:7px; border: #ddd 1px solid;
+}
+
+ div.msg_bbl {
+      background-color: #ddd;
+      padding: 5px 10px;
+      border-radius: 10px;
+      color: #555;
+      margin-bottom: 5px;
+}
+
+td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
+
+.selected {
+    background-color: rgba(82,179,217,0.9);
+    color: #FFF;
+}
+
+div.chatroom {
+    border-radius: 0.2em;
+    height: 400px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
 
 /* M E S S A G E S */
