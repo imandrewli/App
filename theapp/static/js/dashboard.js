@@ -1,11 +1,3 @@
-$('#back_to_dashboard').on('click', function () {
-    linkLocation = "/dashboard";
-    $("body").fadeOut(1000, redirectPage);
-    function redirectPage() {
-        window.location = linkLocation;
-    }
-});
-
 $('#back_to_login').on('click', function () {
     linkLocation = "/";
     $("body").fadeOut(1000, redirectPage);

@@ -88,3 +88,10 @@ socket.on('history req', function( msg ){
     }
 });
 
+$('#back_to_dashboard').on('click', function () {
+    linkLocation = "/dashboard";
+    $("body").fadeOut(1000, redirectPage);
+    function redirectPage() {
+        window.location = linkLocation;
+    }
+});
