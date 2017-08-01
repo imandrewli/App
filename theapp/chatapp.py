@@ -25,15 +25,9 @@ def get_file_name():
 def on_message(json):
     print('received something chat:' + str(json))
     room = json['room']        
-
-    if str(json['msg']) == '\history':
-        emit('history req', json, room = room)
-        for item in room_dict[str(room)]:
-            emit('message response', item, room=room)
-
-    else:      
-        room_dict[str(room)].append(json)
-        emit('message response', json, room=room)
+  
+    room_dict[str(room)].append(json)
+    emit('message response', json, room=room)
 
 
 @socketio.on('join')
@@ -44,18 +38,10 @@ def on_join(json):
 
     print('joined room: ' + room)
     
-    if room in room_dict:
-        x+1
-    else:
+    if room not in room_dict:
         room_dict[str(room)] = []
-        print('\n room dict: ')
-        print( room_dict)
-
     
     emit('join response', json, room=room)
 
-    emit('history req', json, room = room) # I cant get this line to display anything in the chat room.
-    # for item in room_dict[str(room)]:
-    #     emit('message response', item, room=room)
-           
-    
+    for item in room_dict[str(room)]:
+        emit('message response', item)
