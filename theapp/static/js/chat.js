@@ -63,3 +63,13 @@ socket.on('message response', function( msg ){
         $('#chatbox').css('max-height', $(window).height() - 150);
     }
 });
+
+// History readout
+socket.on('history req', function( msg ){
+    if( typeof msg.user !== 'undefined' ){
+        $('h1').remove();
+        $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + msg.room + '\'s ' + 'chat history...' + '</div>' );
+        $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+        $('#chatbox').css('max-height', $(window).height() - 150);
+    }
+});
