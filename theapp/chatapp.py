@@ -4,8 +4,10 @@ from flask import render_template
 from flask import session
 from flask_socketio import emit
 from flask_socketio import join_room, leave_room
+import json
 
-room_dict = {}
+room_history = {}
+room_history["general"] = []
 
 @myapp.route('/')
 def index():
@@ -15,31 +17,38 @@ def index():
 def chat_room(chat_room):
     return render_template('ChatAppPage.html')
 
+@myapp.route('/dashboard')
+def dashboard():           
+    return render_template('dashboard.html', rooms=list(room_history.keys()))
+
 @myapp.route('/getFileName')
 def get_file_name():
     return 'static/content/connected.mp3'
 
 @socketio.on('message')
 def on_message(json):
-	room = json['room']  
-	room_dict[str(room)].append(json)
-	emit('message response', json, room=room)
-	if ( len(room_dict[str(room)]) > 25 ):
-		room_dict[str(room)].pop(0)
+    print('received something chat:' + str(json))
+    room = json['room']        
+    room_history[str(room)].append(json)
+    emit('message response', json, room=room)
+    if ( len(room_history[str(room)]) > 25 ):
+		room_history[str(room)].pop(0)
+
+@socketio.on('createroom')
+def on_create_room(json):
+    room_name = str(json['room'])
+    if room_name not in room_history:
+        room_history[room_name] = []
+        emit('new room msg', json)
 
 @socketio.on('join')
 def on_join(json):
     alias = json['alias']
-    room = json['room']
+    room = json['room'] 
+
     join_room(room)
-
+    
     emit('join response', json, room=room)
-
-    if room not in room_dict:
-        room_dict[str(room)] = []
-        emit('new room msg', json)
-    else:
-    	emit('history req', json)
-    	for item in room_dict[str(room)]:
-    		emit('message response', item)
-
+    emit('history req', json)
+    for item in room_history[str(room)]:
+        emit('message response', item)

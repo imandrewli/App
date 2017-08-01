@@ -36,7 +36,6 @@ $(document).ready(function(){
     var form = $('form').on('submit', function ( event ){
         event.preventDefault();
         var alias = $('input.alias').val();
-        room = $('input.room').val();
 
         var user = {
             alias: alias 
@@ -63,7 +62,7 @@ $(document).ready(function(){
     });
 
     function wait_link (){
-        linkLocation = "/chat/" + String(room);
+        linkLocation = "/dashboard";
         $("body").fadeOut(1000, redirectPage);      
         function redirectPage() {
             window.location = linkLocation;

@@ -1,121 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Hissper - Dashboard</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/dash.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<link rel="stylesheet" href="../static/css/dash.css">
 
 <body>
-    <div class="menu">
-        <div class="back"><i class="fa fa-chevron-left"></i> <img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-        <div class="name">
-            Alex
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Chatroom</h4>
         </div>
-        <div class="last">
-            18:09
+        <div class="modal-body">
+          <form id="create-chatroom" action="/" method="post">
+            <div class="field-wrap">
+              <input class="room" autocomplete="off" placeholder="Enter chatroom name" autofocus="autofocus" />
+            </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="start_chatting" class="btn btn-danger" type="submit">Start Chatting</button>
+          </form>
+        </div>
+      </div>
+
     </div>
-    <ol class="chat">
-        <li class="other">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-            <div class="msg">
-                <p>Hola!</p>
-                <p>Te vienes a cenar al centro?</p><time>20:17</time>
-            </div>
-        </li>
-        <li class="self">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/HYcn9xO.png"></div>
-            <div class="msg">
-                <p>Puff...</p>
-                <p>Aún estoy haciendo el contexto de Góngora...</p>
-                <p>Mejor otro día</p><time>20:18</time>
-            </div>
-        </li>
-        <li class="other">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-            <div class="msg">
-                <p>Qué contexto de Góngora?</p><time>20:18</time>
-            </div>
-        </li>
-        <li class="self">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/HYcn9xO.png"></div>
-            <div class="msg">
-                <p>El que mandó Marialu</p>
-                <p>Es para mañana...</p><time>20:18</time>
-            </div>
-        </li>
-        <li class="other">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-            <div class="msg">
-                <p></p>
-                <p>Pásamelo!</p><time>20:18</time>
-            </div>
-        </li>
-        <li class="self">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/HYcn9xO.png"></div>
-            <div class="msg">
-                <img draggable="false" src="https://i.imgur.com/QAROObc.jpg"> <time>20:19</time>
-            </div>
-        </li>
-        <li class="other">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-            <div class="msg">
-                <p>Gracias!</p><time>20:20</time>
-            </div>
-            <div class="day">
-                Hoy
-            </div>
-        </li>
-        <li class="self">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/HYcn9xO.png"></div>
-            <div class="msg">
-                <p>Te apetece jugar a Minecraft?</p><time>18:03</time>
-            </div>
-        </li>
-        <li class="other">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-            <div class="msg">
-                <p>Venga va, hace ya mucho que no juego...</p><time>18:07</time>
-            </div>
-        </li>
-        <li class="self">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/HYcn9xO.png"></div>
-            <div class="msg">
-                <p>Ehh, me crashea el Launcher...</p><time>18:08</time>
-            </div>
-        </li>
-        <li class="other">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-            <div class="msg">
-                <p></p><time>18:08</time>
-            </div>
-        </li>
-        <li class="self">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/HYcn9xO.png"></div>
-            <div class="msg">
-                <p>Es broma</p>
-                <p>Ataque Moai!</p>
-                <p><span></span><span></span><span></span><span></span><span></span><span></span></p><time>18:09</time>
-            </div>
-        </li>
-        <li class="other">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/DY6gND0.png"></div>
-            <div class="msg">
-                <p>Copón</p>
-                <p></p><time>18:08</time>
-            </div>
-        </li>
-        <li class="self">
-            <div class="avatar"><img draggable="false" src="https://i.imgur.com/HYcn9xO.png"></div>
-            <div class="msg">
-                <p>Hey there's a new update about this chat UI with more responsive elements! Check it now:</p>
-                <p><a href="https://codepen.io/Varo/pen/YPmwpQ" target="parent">Chat UI 2.0</a></p><time>18:09</time>
-            </div>
-        </li>
-    </ol>
-    <form>
-        <input class="textarea" placeholder="Type here!" type="text">
-    </form>
-    <div class="emojis"></div>
+  </div>
+
+  <div class="menu">
+    <div class="back" id="back_to_login"><i class="fa fa-chevron-left"></i></div>
+    <div class="name">
+      Back to Login
+    </div>
+    <div class="name_center">    <div class="name_right" id="alias-banner">
+    </div>
+      Dashboard
+    </div>
+  </div>
+  <div class="text-center well"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2> Chatrooms Available </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 container well message_holder">
+        <table id="table">
+          <tr id="table_header">
+            <th>#</th>
+            <th>Chatroom</th>
+            <th>Active Users</th>
+          </tr>
+
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <button id="join_room" type="button" style="width: 150px" class="btn-primary"> Join Chatroom </button>
+      </div>
+      <div class="col-sm-3">
+        <button id="create_room" type="button" style="width: 150px" class="btn-danger" data-toggle="modal" data-target="#myModal"> Create Chatroom </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  <script>
+    var socket = io.connect('http://' + document.domain + ':' + location.port)
+    // broadcast a message
+    socket.on('connect', function () {
+      socket.emit('my event', {
+        data: 'User Connected'
+      })
+      var form = $('form').on('submit', function (e) {
+        e.preventDefault()
+        let user_name = $('input.username').val()
+        let user_input = $('input.message').val()
+        socket.emit('my event', {
+          user_name: user_name,
+          message: user_input
+        })
+        // empty the input field
+        $('input.message').val('').focus()
+      })
+    })
+
+    // capture message
+    socket.on('my response', function (msg) {
+      console.log(msg)
+      if (typeof msg.user_name !== 'undefined') {
+        $('h1').remove()
+        $('div.message_holder').append('<div class="msg_bbl"><b style="color: #000">' + msg.user_name + '</b> ' + msg.message + '</div>')
+      }
+    })
+  </script>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  <script type="text/javascript">
+    myVar = generateTable("{{rooms|safe}}")
+  </script>
+
+
 </body>
+
 </html>
