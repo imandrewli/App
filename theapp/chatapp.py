@@ -39,16 +39,22 @@ def on_create_room(json):
     room_name = str(json['room'])
     if room_name not in room_history:
         room_history[room_name] = []
-        emit('new room msg', json)
+        #emit('new room msg', json)
 
 @socketio.on('join')
 def on_join(json):
     alias = json['alias']
     room = json['room'] 
+    room_name = str(json['room'])
 
     join_room(room)
-    
     emit('join response', json, room=room)
-    emit('history req', json)
-    for item in room_history[str(room)]:
-        emit('message response', item)
+    if ( len(room_history[room_name]) == 0 ):
+        if (room_name == 'general'):
+            emit('general room msg', json)
+        else:
+            emit('new room msg', json)
+    else:
+        emit('history req', json)
+        for item in room_history[room_name]:
+            emit('message response', item)
