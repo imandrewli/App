@@ -1,3 +1,6 @@
+var alias = sessionStorage.getItem("alias");
+document.getElementById("alias-banner").innerHTML = "Alias: " + alias;
+
 $('#back_to_login').on('click', function () {
     linkLocation = "/";
     $("body").fadeOut(1000, redirectPage);

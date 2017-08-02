@@ -64,8 +64,8 @@ a{
 }
 .name{
     position: absolute;
-    top: 6px;
-    left: 50px;
+    top: 12%;
+    left: 5%;
     font-family: 'Lato';
     font-size: 25px;
     font-weight: 300;
@@ -73,25 +73,28 @@ a{
     cursor: default;
 }
 .name_center{
-    margin-top:10px;
     text-align: center;
     font-family: 'Lato';
     font-size: 25px;
     font-weight: 800;
     color: rgba(255,255,255,0.98);
     cursor: default;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 12%;
 }
 .name_right{
     position: absolute;
-    right:50px;
-    margin-bottom: 50px;
     text-align: right;
     font-family: 'Lato';
     font-size: 25px;
     font-weight: 800;
     color: rgba(255,255,255,0.98);
+    z-index: 10;
+    left: 85%;
+    top: 12%;
 }
-
 .last{
     position: absolute;
     top: 30px;
