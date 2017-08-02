@@ -40,7 +40,7 @@ function generateTable(vars) {
 var form = $('form#create-chatroom').on('submit', function (event) {
     event.preventDefault();
     var alias = sessionStorage.getItem("alias");
-    room = $('input.room').val();
+    room = $('input.room').val().toLowerCase();
 
     var user = {
         alias: alias
