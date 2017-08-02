@@ -106,6 +106,10 @@ a{
     cursor: default;
 }
 
+.ajs-right {
+    right: 5px !important;
+    top: 40px !important;
+}
 /* D A S H B O A R D */
 
 #table{
