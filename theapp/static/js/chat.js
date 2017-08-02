@@ -73,12 +73,18 @@ socket.on('message response', function (msg) {
 
 // History readout
 socket.on('history req', function( msg ){
-    if( typeof msg.user !== 'undefined' ){
-        $('h1').remove();
-        $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + msg.room + '\'s ' + 'chat history...' + '</div>' );
-        $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
-        $('#chatbox').css('max-height', $(window).height() - 150);
-    }
+    $('h1').remove();
+    $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + msg.room + '\'s ' + 'past 25 messages...' + '</div>' );
+    $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+    $('#chatbox').css('max-height', $(window).height() - 150);
+});
+
+// New room msg
+socket.on('new room msg', function( msg ){
+    $('h1').remove();
+    $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + 'Welcome to the new room \'' + msg.room + '\'!' + '</div>' );
+    $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+    $('#chatbox').css('max-height', $(window).height() - 150);
 });
 
 $('#back_to_dashboard').on('click', function () {
