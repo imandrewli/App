@@ -39,7 +39,6 @@ def on_create_room(json):
     room_name = str(json['room'])
     if room_name not in room_history:
         room_history[room_name] = []
-        #emit('new room msg', json)
 
 @socketio.on('join')
 def on_join(json):
