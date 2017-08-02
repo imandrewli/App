@@ -83,6 +83,16 @@ socket.on('history req', function( msg ){
 socket.on('new room msg', function( msg ){
     $('h1').remove();
     $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + 'Welcome to the new room \'' + msg.room + '\'!' + '</div>' );
+    $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + 'There is no history to display yet.' + '</div>' );
+    $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+    $('#chatbox').css('max-height', $(window).height() - 150);
+});
+
+// general room msg
+socket.on('general room msg', function( msg ){
+    $('h1').remove();
+    $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + 'Welcome to the general chatroom!' + '</div>' );
+    $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + 'There is no history to display yet.' + '</div>' );
     $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
     $('#chatbox').css('max-height', $(window).height() - 150);
 });
