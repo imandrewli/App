@@ -8,6 +8,8 @@ import json
 
 room_history = {}
 room_history["general"] = []
+users = {}
+users["general"] = []
 
 @myapp.route('/')
 def index():
@@ -18,8 +20,11 @@ def chat_room(chat_room):
     return render_template('ChatAppPage.html')
 
 @myapp.route('/dashboard')
-def dashboard():           
-    return render_template('dashboard.html', rooms=list(room_history.keys()))
+def dashboard():
+    numUsers = []
+    for item in users:
+        numUsers.append(len(users[item]))
+    return render_template('dashboard.html', rooms=list(room_history.keys()), users=list(numUsers))
 
 @myapp.route('/getFileName')
 def get_file_name():
@@ -39,15 +44,18 @@ def on_create_room(json):
     room_name = str(json['room'])
     if room_name not in room_history:
         room_history[room_name] = []
+        users[room_name] = []
 
 @socketio.on('join')
 def on_join(json):
     alias = json['alias']
     room = json['room'] 
     room_name = str(json['room'])
-
+    
     join_room(room)
+    users[str(room)].append(alias)
     emit('join response', json, room=room)
+
     if ( len(room_history[room_name]) == 0 ):
         if (room_name == 'general'):
             emit('general room msg', json)

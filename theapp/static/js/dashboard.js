@@ -27,12 +27,13 @@ $('#join_room').on('click', function () {
     }
 });
 
-function generateTable(vars) {
-    var array = vars.split(',')
+function generateTable(rooms, users) {
+    var roomsArray = rooms.split(',')
+    var usersArray = users.split(',')
     var tbody = document.getElementById('table');
-    for (var i = 0; i < array.length; i++) {
+    for (var i = 0; i < roomsArray.length; i++) {
         var tr = "<tr id='table-rows'>";
-        tr += "<td>" + parseInt(i + 1) + "</td>" + "<td>" + array[i].replace(/[\[\]'\s]/g, '') + "</td></tr>";
+        tr += "<td>" + parseInt(i + 1) + "</td>" + "<td>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') + "</td>" +"</tr>";
         tbody.innerHTML += tr;
     }
 }

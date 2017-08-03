@@ -125,7 +125,7 @@
 
   <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
   <script type="text/javascript">
-    myVar = generateTable("{{rooms|safe}}")
+    myVar = generateTable("{{rooms|safe}}","{{users|safe}}")
   </script>
 
 
