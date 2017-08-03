@@ -27,6 +27,14 @@ $('#join_room').on('click', function () {
     }
 });
 
+$('#modalCreate').on('hidden.bs.modal', function () {
+    $(this).find('form').trigger('reset');
+})
+
+$('#modalCreate').on('shown.bs.modal', function () {
+    $("#chatroom-inputfield").focus();
+})
+
 function generateTable(rooms, users) {
     var roomsArray = rooms.split(',')
     var usersArray = users.split(',')

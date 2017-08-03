@@ -40,12 +40,12 @@
         <div class="modal-body">
           <form id="create-chatroom" action="/" method="post">
             <div class="field-wrap">
-              <input class="room" autocomplete="off" placeholder="Enter chatroom name" autofocus="autofocus" />
+              <input class="room" id="chatroom-inputfield" autocomplete="off" placeholder="Enter chatroom name" />
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="start_chatting" class="btn btn-danger" type="submit">Start Chatting</button>
+          <button id="start_chatting" class="btn btn-success" type="submit">Start Chatting</button>
           </form>
         </div>
       </div>
@@ -60,17 +60,17 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create Chatroom</h4>
+          <h4 class="modal-title">Delete Chatroom</h4>
         </div>
         <div class="modal-body">
           <form id="create-chatroom" action="/" method="post">
             <div class="field-wrap">
-              <input class="room" autocomplete="off" placeholder="Enter chatroom name" autofocus="autofocus" />
+              <p> Are you sure you want to delete the room? </p>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="start_chatting" class="btn btn-danger" type="submit">Start Chatting</button>
+          <button id="delete-room" class="btn btn-danger" type="submit">Delete Room</button>
           </form>
         </div>
       </div>
