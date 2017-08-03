@@ -1,4 +1,4 @@
-# HissChat App
+# HISSper App
 
 
 Hello! If you would like to know how to start this app please follow the instructions below.
