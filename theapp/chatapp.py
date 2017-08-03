@@ -8,11 +8,6 @@ import json
 
 room_history = {}
 room_history["general"] = []
-room_history["AAAAA"] = []
-room_history["123456"] = []
-room_history["999"] = []
-
-
 users = {}
 users["general"] = []
 
@@ -49,7 +44,6 @@ def on_create_room(json):
     room_name = str(json['room'])
     if room_name not in room_history:
         room_history[room_name] = []
-        room_history["ASDAS"] = []
         users[room_name] = []
 
 @socketio.on('deleteroom')
