@@ -37,11 +37,11 @@ $('#modalCreate').on('shown.bs.modal', function () {
 
 function generateTable(rooms, users) {
     var roomsArray = rooms.split(',')
-    var usersArray = users.split(',')
+    var usersArray = users.split(',')   
     var tbody = document.getElementById('table');
     for (var i = 0; i < roomsArray.length; i++) {
         var tr = "<tr id='table-rows'>";
-        tr += "<td>" + parseInt(i + 1) + "</td>" + "<td>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') + "</td>" +"</tr>";
+        tr += "<td>" + parseInt(i + 1) + "</td>" + "<td id='selected-room'>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') + "</td>" +"</tr>";
         tbody.innerHTML += tr;
     }
 }
@@ -87,3 +87,11 @@ function wait_link() {
         window.location = linkLocation;
     }
 }
+
+var del = $('form#delete-chatroom').on('submit', function (event) {
+    var roomToDel = $('.selected #selected-room').html();
+    socket.emit('deleteroom', {
+        room: roomToDel
+    })
+    location.reload();
+});

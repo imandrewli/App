@@ -63,14 +63,14 @@
           <h4 class="modal-title">Delete Chatroom</h4>
         </div>
         <div class="modal-body">
-          <form id="create-chatroom" action="/" method="post">
+          <form id="delete-chatroom" action="/" method="post">
             <div class="field-wrap">
               <p> Are you sure you want to delete the room? </p>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="delete-room" class="btn btn-danger" type="submit">Delete Room</button>
+          <button id="delete-chatroom" class="btn btn-danger" type="submit" onSubmit="close">Delete Room</button>
           </form>
         </div>
       </div>
@@ -113,7 +113,7 @@
         <button id="create_room" type="button" style="width: 150px" class="btn-success" data-toggle="modal" data-target="#modalCreate"> Create Chatroom </button>
       </div>
       <div class="col-sm-3">
-        <button id="delete_room" type="button" style="width: 150px" class="btn-danger" data-toggle="modal" data-target="#modalDelete"> Delete Chatroom </button>
+        <button type="button" style="width: 150px" class="btn-danger" data-toggle="modal" data-target="#modalDelete"> Delete Chatroom </button>
       </div>
     </div>
   </div>

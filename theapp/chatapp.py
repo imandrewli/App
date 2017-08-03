@@ -8,6 +8,11 @@ import json
 
 room_history = {}
 room_history["general"] = []
+room_history["AAAAA"] = []
+room_history["123456"] = []
+room_history["999"] = []
+
+
 users = {}
 users["general"] = []
 
@@ -21,7 +26,7 @@ def chat_room(chat_room):
 
 @myapp.route('/dashboard')
 def dashboard():
-    numUsers = []
+    numUsers = [1,2,3]
     for item in users:
         numUsers.append(len(users[item]))
     return render_template('dashboard.html', rooms=list(room_history.keys()), users=list(numUsers))
@@ -29,7 +34,7 @@ def dashboard():
 @myapp.route('/getFileName')
 def get_file_name():
     return 'static/content/connected.mp3'
-
+    
 @socketio.on('message')
 def on_message(json):
     print('received something chat:' + str(json))
@@ -44,14 +49,19 @@ def on_create_room(json):
     room_name = str(json['room'])
     if room_name not in room_history:
         room_history[room_name] = []
+        room_history["ASDAS"] = []
         users[room_name] = []
+
+@socketio.on('deleteroom')
+def on_delete_room(json):
+    room_history.pop(str(json['room']))
 
 @socketio.on('join')
 def on_join(json):
     alias = json['alias']
     room = json['room'] 
     room_name = str(json['room'])
-    
+
     join_room(room)
     users[str(room)].append(alias)
     emit('join response', json, room=room)
