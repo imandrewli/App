@@ -7,15 +7,9 @@ socket.on('connect', function () {
         alias: alias,
         room: room
     });
-    var chatRoomIdentifier = document.getElementById("chat_room_name");
-    var aliasIdentifier = document.getElementById("alias-banner");
+    document.getElementById("chat_room_name").innerHTML = room.replace(/%20/g,'');
 
-    if(chatRoomIdentifier) {
-        chatRoomIdentifier.innerHTML = room; 
-    }
-    if(aliasIdentifier) {
-        aliasIdentifier.innerHTML = "Alias: " + alias;
-    }
+    document.getElementById("alias-banner").innerHTML = "Alias: " + alias;
 });
 
 //Capture users joining

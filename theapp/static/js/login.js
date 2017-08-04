@@ -15,6 +15,7 @@ $(document).ready(function(){
             $form.addClass('animated flipInY').one(animationEnd, function(){
                 $(this).removeClass('animated flipInY');
                 $login_div.remove();
+                $("#alias_input").focus();
             });
             $welcome.css('opacity' , '1');
         });

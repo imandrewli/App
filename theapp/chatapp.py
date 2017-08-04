@@ -20,13 +20,19 @@ def chat_room(chat_room):
     return render_template('ChatAppPage.html')
 
 @myapp.route('/dashboard')
-def dashboard():           
-    return render_template('dashboard.html', rooms=list(room_history.keys()))
+def dashboard():
+    numUsers = []
+    sortedRooms = sorted(list(room_history.keys()))
+
+    for item in sortedRooms:
+        numUsers.append(len(room_users[item]))
+    
+    return render_template('dashboard.html', rooms=sortedRooms, users=numUsers)
 
 @myapp.route('/getFileName')
 def get_file_name():
     return 'static/content/connected.mp3'
-
+    
 @socketio.on('message')
 def on_message(json):
     print('received something chat:' + str(json))
