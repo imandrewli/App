@@ -21,10 +21,13 @@ def chat_room(chat_room):
 
 @myapp.route('/dashboard')
 def dashboard():
-    numUsers = [1,2,3]
-    for item in users:
+    numUsers = []
+    sortedRooms = sorted(list(room_history.keys()))
+
+    for item in sortedRooms:
         numUsers.append(len(users[item]))
-    return render_template('dashboard.html', rooms=list(room_history.keys()), users=list(numUsers))
+    
+    return render_template('dashboard.html', rooms=sortedRooms, users=numUsers)
 
 @myapp.route('/getFileName')
 def get_file_name():
@@ -55,9 +58,9 @@ def on_join(json):
     alias = json['alias']
     room = json['room'] 
     room_name = str(json['room'])
-
     join_room(room)
-    users[str(room)].append(alias)
+    
+    users[room_name].append(alias)
     emit('join response', json, room=room)
 
     if ( len(room_history[room_name]) == 0 ):

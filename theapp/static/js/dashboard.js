@@ -11,15 +11,27 @@ $('#back_to_login').on('click', function () {
 
 $(window).on('load', function () {
     $('#table tr').eq(1).addClass('selected');
-})
+    var room = String($("#table tr.selected td:nth-child(1)").html());
+    if (room == "general") {
+        $("#delete_room").attr("disabled",true);
+    }
+});
 
 $(document).on('click', 'table #table-rows', function () {
     $("#table #table-rows").removeClass('selected');
     $(this).addClass('selected')
+    var room = String($("#table tr.selected td:nth-child(1)").html());
+
+    if (room == "general") {
+        $("#delete_room").attr("disabled",true);
+    }
+    else {
+        $("#delete_room").attr("disabled",false);
+    }
 });
 
 $('#join_room').on('click', function () {
-    var room = String($("#table tr.selected td:nth-child(2)").html());
+    var room = String($("#table tr.selected td:nth-child(1)").html());
     linkLocation = "/chat/" + String(room);
     $("body").fadeOut(1000, redirectPage);
     function redirectPage() {
@@ -39,11 +51,13 @@ function generateTable(rooms, users) {
     var roomsArray = rooms.split(',')
     var usersArray = users.split(',')   
     var tbody = document.getElementById('table');
+
     for (var i = 0; i < roomsArray.length; i++) {
         var tr = "<tr id='table-rows'>";
-        tr += "<td>" + parseInt(i + 1) + "</td>" + "<td id='selected-room'>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') + "</td>" +"</tr>";
+        tr += "<td id='selected-room'>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') + "</td>" +"</tr>";
         tbody.innerHTML += tr;
     }
+
 }
 
 var form = $('form#create-chatroom').on('submit', function (event) {

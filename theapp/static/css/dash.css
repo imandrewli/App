@@ -112,6 +112,17 @@ a{
 }
 /* D A S H B O A R D */
 
+.btn-danger:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.btn-danger:disabled:hover {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 #table{
     width:100%; 
     border-collapse:collapse; 
