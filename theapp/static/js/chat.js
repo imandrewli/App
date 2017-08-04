@@ -7,7 +7,7 @@ socket.on('connect', function () {
         alias: alias,
         room: room
     });
-    document.getElementById("chat_room_name").innerHTML = room.replace(/%20/g, " ");
+    document.getElementById("chat_room_name").innerHTML = room.replace(/%20/g,'');
 
     document.getElementById("alias-banner").innerHTML = "Alias: " + alias;
 });
@@ -50,7 +50,7 @@ var form = $('form').on('submit', function (event) {
     room = path[2];
 
     socket.emit('message', {
-        user: alias,
+        alias: alias,
         msg: message,
         color: chosen_color,
         room: room
@@ -64,12 +64,20 @@ $(window).on('resize', function () {
 
 // Capture new messages
 socket.on('message response', function (msg) {
-    if (typeof msg.user !== 'undefined') {
+    if (typeof msg.alias !== 'undefined') {
         $('h1').remove();
-        $('div.message_holder').append('<div class="message_roll"><b style="color:' + msg.color + '">' + msg.user + ': </b>' + msg.msg + '</div>');
+        $('div.message_holder').append('<div class="message_roll"><b style="color:' + msg.color + '">' + msg.alias + ': </b>' + msg.msg + '</div>');
         $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
         $('#chatbox').css('max-height', $(window).height() - 150);
     }
+});
+
+// Full room msg
+socket.on('full response', function( msg ){
+    $('h1').remove();
+    $('div.message_holder').append('<div class="message_roll"><b style="color:' + '000000' + '">' + 'Room is full, try again later' + '</div>' );
+    $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+    $('#chatbox').css('max-height', $(window).height() - 150);
 });
 
 // History readout
@@ -98,10 +106,22 @@ socket.on('general room msg', function( msg ){
     $('#chatbox').css('max-height', $(window).height() - 150);
 });
 
+//when the back to dashboard is clicked
 $('#back_to_dashboard').on('click', function () {
     linkLocation = "/dashboard";
     $("body").fadeOut(1000, redirectPage);
+    socket.emit('leaveroom', {
+        alias: alias,
+        room: room
+    });
     function redirectPage() {
         window.location = linkLocation;
     }
 });
+
+window.onbeforeunload = function(){
+    socket.emit('leaveroom', {
+        alias: alias,
+        room: room
+    });
+};

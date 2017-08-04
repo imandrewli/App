@@ -54,7 +54,7 @@ function generateTable(rooms, users) {
 
     for (var i = 0; i < roomsArray.length; i++) {
         var tr = "<tr id='table-rows'>";
-        tr += "<td id='selected-room'>" + roomsArray[i].replace(/[\[\]']/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]']/g, '') + "</td>" +"</tr>";
+        tr += "<td id='selected-room'>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') + "</td>" +"</tr>";
         tbody.innerHTML += tr;
     }
 
@@ -103,7 +103,8 @@ function wait_link() {
 }
 
 var del = $('form#delete-chatroom').on('submit', function (event) {
-    var roomToDel = $('.selected #selected-room').html();
+    var roomToDel = String($('.selected #selected-room').html());
+    alert("["+roomToDel+"]")
     socket.emit('deleteroom', {
         room: roomToDel
     })
