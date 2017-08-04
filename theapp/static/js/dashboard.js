@@ -104,7 +104,6 @@ function wait_link() {
 
 var del = $('form#delete-chatroom').on('submit', function (event) {
     var roomToDel = String($('.selected #selected-room').html());
-    alert("["+roomToDel+"]")
     socket.emit('deleteroom', {
         room: roomToDel
     })

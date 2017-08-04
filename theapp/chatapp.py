@@ -45,7 +45,7 @@ def on_message(json):
 @socketio.on('createroom')
 def on_create_room(json):
     room_name = str(json['room'])
-    room_history[room_name] = 0
+    room_history[room_name] = []
     room_users[room_name] = []
     if room_name not in room_history:
         room_history[room_name] = []
@@ -61,8 +61,8 @@ def on_leave_room(json):
 @socketio.on('deleteroom')
 def on_close_room(json):
     room = json['room']
-    room_history.pop(str(room))
-    room_users.pop(str(room))
+    del room_history[str(room)]
+    del room_users[str(room)]
     emit("Room is being closed, please leave", json, room=room)
     close_room(room)
 
