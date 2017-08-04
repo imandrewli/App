@@ -54,7 +54,7 @@ function generateTable(rooms, users) {
 
     for (var i = 0; i < roomsArray.length; i++) {
         var tr = "<tr id='table-rows'>";
-        tr += "<td id='selected-room'>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') + "</td>" +"</tr>";
+        tr += "<td id='selected-room'>" + roomsArray[i].replace(/[\[\]'\s]/g, '') + "</td>" + "<td>" + usersArray[i].replace(/[\[\]'\s]/g, '') +"/100" + "</td>" +"</tr>";
         tbody.innerHTML += tr;
     }
 
