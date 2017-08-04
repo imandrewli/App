@@ -52,10 +52,12 @@ def on_create_room(json):
 
 @socketio.on('leaveroom')
 def on_leave_room(json):
+    print("LEAVING ROOM")
     alias = str(json['alias'])
     room = json['room']
     leave_room(room)
-    if alias in room_users[str(room)]: room_users[str(room)].remove(alias)
+    if alias in room_users[str(room)]:
+        room_users[str(room)].remove(alias)
     emit(alias + ' has left the room', json, room=room)
 
 @socketio.on('deleteroom')
