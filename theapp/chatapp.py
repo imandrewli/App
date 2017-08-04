@@ -39,7 +39,7 @@ def on_message(json):
 @socketio.on('createroom')
 def on_create_room(json):
     room_name = str(json['room'])
-    room_history[room_name] = 0
+    room_history[room_name] = []
     room_users[room_name] = []
     if room_name not in room_history:
         room_history[room_name] = []
