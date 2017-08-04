@@ -60,7 +60,7 @@ def on_join(json):
     room_name = str(json['room'])
     join_room(room)
     
-    users[room_name].append(alias)
+    # users[room_name].append(alias)
     emit('join response', json, room=room)
 
     if ( len(room_history[room_name]) == 0 ):
