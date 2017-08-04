@@ -7,7 +7,8 @@ socket.on('connect', function () {
         alias: alias,
         room: room
     });
-    document.getElementById("chat_room_name").innerHTML = room;
+    document.getElementById("chat_room_name").innerHTML = room.replace(/%20/g, " ");
+
     document.getElementById("alias-banner").innerHTML = "Alias: " + alias;
 });
 
