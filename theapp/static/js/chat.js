@@ -66,7 +66,8 @@ $(window).on('resize', function () {
 socket.on('message response', function (msg) {
     if (typeof msg.alias !== 'undefined') {
         $('h1').remove();
-        $('div.message_holder').append('<div class="message_roll"><b style="color:' + msg.color + '">' + msg.alias + ': </b>' + msg.msg + '</div>');
+        $('div.message_holder').append('<div class="message_roll"><div style="color:' + msg.color + '">' + msg.alias + ': ' +
+                                '<p style="word-wrap: break-word; width: 100%; color: black; display: inline">' + msg.msg + '</p>' + '</div>' + '</div>');
         $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
         $('#chatbox').css('max-height', $(window).height() - 150);
     }
