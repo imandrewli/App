@@ -18,12 +18,15 @@ body {
 
 
 #logo{
+
     position: absolute;
     z-index: 2;
-    top: 4%;
-    left: 36%;
     filter: brightness(1) invert(1);
     width: 27%;
+    left: 0;
+    right: 0;
+    bottom: 81%;
+    margin: auto;
 }
 
 .grid-container {
@@ -101,7 +104,7 @@ body {
     font-family: 'Titillium Web', sans-serif;
     position: absolute;
     z-index: 1;
-    top: 14%;
+    top: 24%;
     left: 0;
     right: 0;
 	opacity: 0;
@@ -262,6 +265,17 @@ textarea {
 .forgot {
   margin-top: -8px;
   text-align: right;
+}
+
+.authors > p {
+    position: absolute;
+    z-index: 2;
+    top: 90%;
+    font-size: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
 }
 
 
