@@ -270,7 +270,7 @@ textarea {
 .authors > p {
     position: absolute;
     z-index: 2;
-    top: 90%;
+    top: 85%;
     font-size: 16px;
     left: 0;
     right: 0;
@@ -278,10 +278,14 @@ textarea {
     color: white;
 }
 
-
-
-
-
-
-
+.doc {
+    position: absolute;
+    z-index: 2;
+    top: 90%;
+    font-size: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+}
 
